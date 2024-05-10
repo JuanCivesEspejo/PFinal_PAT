@@ -1,0 +1,29 @@
+### TODO#12
+### Completa los ... de las siguientes peticiones por orden,
+### para probar el API con el plugin REST CLIENT de VsCode
+
+### Create user
+POST http://localhost:8080/api/users HTTP/1.1
+Content-Type: application/json
+
+{
+    "name" : "Juan",
+    "email": "juan@email.com",
+    "role": "USER",
+    "password": "contRASEnia21"
+}
+
+### Login
+
+POST http://localhost:8080/api/users/me/session HTTP/1.1
+Content-Type: application/json
+
+{
+    "email": "juan@email.com",
+    "password": "contRASEnia21"
+}
+
+### Profile
+
+GET http://localhost:8080/api/users/me HTTP/1.1
+Cookie: session=b07d14df-e68d-456e-9300-162ee50e45d2

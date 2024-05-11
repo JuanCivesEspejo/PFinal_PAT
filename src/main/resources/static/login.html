@@ -3,14 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Login</title>
+  <title>RP-FoodLink</title>
   <script src="login.js"></script>
   <link rel="stylesheet" type="text/css" href="login.css" />
 </head>
 <body onload="inicializar()">
+<header>
+  <h1>RP-FoodLink</h1>
+  <p>Tanto si eres un restaurante como si eres un proveedor de alimentos<br>En RP-FoodLink te ayudamos a llevar un registro organizado de tus pedidos</p>
+</header>
+<main>
   <form onsubmit="entrar(form2json(event))">
     <fieldset>
-      <legend>🔐</legend>
+      <legend>🔐INICIA SESION🔐</legend>
       <label for="email">Correo electrónico:</label>
       <input type="email" name="email" id="email" required>
       <label for="password">Contraseña:</label>
@@ -21,5 +26,9 @@
       <a href="registro.html">Registrarse</a>
     </fieldset>
   </form>
+</main>
+<footer>
+  <p>GRACIAS POR CONFIAR EN NOSOTROS</p>
+</footer>
 </body>
 </html>

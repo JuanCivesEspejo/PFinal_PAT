@@ -14,13 +14,6 @@ import org.springframework.util.StringUtils;
 
 import java.util.Optional;
 
-/**
- * TODO#6
- * Completa los métodos del servicio para que cumplan con el contrato
- * especificado en el interface UserServiceInterface, utilizando
- * los repositorios y entidades creados anteriormente
- */
-
 @Service
 public class UserService implements UserServiceInterface
 {

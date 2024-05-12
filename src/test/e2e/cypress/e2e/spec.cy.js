@@ -18,10 +18,6 @@ describe('Registro y login', () => {
     cy.contains('¡Registrado! Prueba a entrar')
   })
 
-  // TODO#13
-  // Implementa el siguiente test E2E del frontend web para
-  // verificar que se realiza el login correctamente con el usuario
-  // previamente registrado
   it('Login correcto', () => {
     cy.visit('http://localhost:8080/login.html')
     cy.get('[name="email"]').type(email)

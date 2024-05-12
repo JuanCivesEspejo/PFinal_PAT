@@ -13,11 +13,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-/**
- * TODO#7
- * Añade 2 tests unitarios adicionales que validen diferentes casos
- * (no variaciones del mismo caso) de registro con datos inválidos
- */
 
 class RegisterRequestUnitTest {
 
@@ -28,7 +23,7 @@ class RegisterRequestUnitTest {
         // Given ...
         RegisterRequest registro = new RegisterRequest(
                 "Nombre", "nombre@email.com",
-                Role.USER, "aaaaaaA1");
+                Role.RESTAURANTE, "aaaaaaA1");
         // When ...
         Set<ConstraintViolation<RegisterRequest>> violations =
                 validator.validate(registro);
@@ -42,7 +37,7 @@ class RegisterRequestUnitTest {
         // Given ...
         RegisterRequest registro = new RegisterRequest(
                 "", "pepito@email.com",
-                Role.USER, "bAl10INT27.7s");
+                Role.RESTAURANTE, "bAl10INT27.7s");
         // When ...
         Set<ConstraintViolation<RegisterRequest>> violations =
                 validator.validate(registro);
@@ -55,7 +50,7 @@ class RegisterRequestUnitTest {
     {
         RegisterRequest registro = new RegisterRequest(
                 "Manolo", "manolo123@email.com",
-                Role.USER, "manolo1");
+                Role.RESTAURANTE, "manolo1");
         // When ...
         Set<ConstraintViolation<RegisterRequest>> violations =
                 validator.validate(registro);
@@ -68,7 +63,7 @@ class RegisterRequestUnitTest {
     {
         RegisterRequest registro = new RegisterRequest(
                 "Juan", "juan.com",
-                Role.USER, "conTRAsenia25");
+                Role.RESTAURANTE, "conTRAsenia25");
         // When ...
         Set<ConstraintViolation<RegisterRequest>> violations =
                 validator.validate(registro);

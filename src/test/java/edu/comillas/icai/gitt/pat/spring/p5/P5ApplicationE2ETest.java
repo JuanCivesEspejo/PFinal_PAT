@@ -43,7 +43,7 @@ class P5ApplicationE2ETest {
         String registro = "{" +
                 "\"name\":\"" + NAME + "\"," +
                 "\"email\":\"" + EMAIL + "\"," +
-                "\"role\":\"" + Role.USER + "\"," +
+                "\"role\":\"" + Role.RESTAURANTE + "\"," +
                 "\"password\":\"" + PASS + "\"}";
 
         // When ...
@@ -56,15 +56,10 @@ class P5ApplicationE2ETest {
         Assertions.assertEquals("{" +
                 "\"name\":\"" + NAME + "\"," +
                 "\"email\":\"" + EMAIL + "\"," +
-                "\"role\":\"" + Role.USER + "\"}",
+                "\"role\":\"" + Role.RESTAURANTE + "\"}",
                 response.getBody());
     }
 
-    /**
-     * TODO#11
-     * Completa el siguiente test E2E para que verifique la
-     * respuesta de login cuando se proporcionan credenciales correctas
-     */
     @Test public void loginOkTest() {
         // Given ...
         HttpHeaders headers = new HttpHeaders();
@@ -72,7 +67,7 @@ class P5ApplicationE2ETest {
         String registro = "{" +
                 "\"name\":\"" + NAME + "\"," +
                 "\"email\":\"" + EMAIL + "\"," +
-                "\"role\":\"" + Role.USER + "\"," +
+                "\"role\":\"" + Role.RESTAURANTE + "\"," +
                 "\"password\":\"" + PASS + "\"}";
 
         ResponseEntity<String> response = client.exchange(

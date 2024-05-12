@@ -5,21 +5,28 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>RP-FoodLink</title>
   <script src="login.js"></script>
+  <script src="https://kit.fontawesome.com/1eae443600.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" type="text/css" href="login.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+
 </head>
 <body onload="inicializar()">
 <header>
   <h1>RP-FoodLink</h1>
   <p>Tanto si eres un restaurante como si eres un proveedor de alimentos<br>En RP-FoodLink te ayudamos a llevar un registro organizado de tus pedidos</p>
 </header>
-<main>
+<main class="container">
   <form onsubmit="entrar(form2json(event))">
     <fieldset>
-      <legend>🔐INICIA SESION🔐</legend>
-      <label for="email">Correo electrónico:</label>
-      <input type="email" name="email" id="email" required>
-      <label for="password">Contraseña:</label>
-      <input type="password" name="password" id="password" required>
+      <legend>Iniciar sesión</legend>
+      <div class="input-field">
+        <i class="fa-solid fa-user"></i>
+        <input type="email" name="email" id="email" placeholder="Email" required>
+      </div>
+      <div class="input-field">
+        <i class="fa-solid fa-lock"></i>
+        <input type="password" name="password" id="password" placeholder="Contraseña" required>
+      </div>
       <p id="aviso"></p>
       <hr>
       <input type="submit" value="Entrar">

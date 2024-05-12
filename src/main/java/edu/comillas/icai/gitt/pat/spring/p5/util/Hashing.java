@@ -10,12 +10,6 @@ import java.security.SecureRandom;
 import java.security.spec.KeySpec;
 import java.util.Base64;
 
-/**
- * TODO#14
- * Utiliza esta clase para guardar en BD y comparar los passwords de forma cifrada:
- * <a href="https://en.wikipedia.org/wiki/Cryptographic_hash_function#Password_verification">Password verification</a>
- * Para ello modifica las partes necesarias en el código creado anteriormente en UserService
- */
 @Component
 public class Hashing {
 

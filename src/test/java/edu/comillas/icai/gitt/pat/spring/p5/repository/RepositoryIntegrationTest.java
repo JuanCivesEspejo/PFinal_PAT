@@ -13,20 +13,13 @@ class RepositoryIntegrationTest {
     @Autowired TokenRepository tokenRepository;
     @Autowired AppUserRepository appUserRepository;
 
-    /**
-     * TODO#9
-     * Completa este test de integración para que verifique
-     * que los repositorios TokenRepository y AppUserRepository guardan
-     * los datos correctamente, y las consultas por AppToken y por email
-     * definidas respectivamente en ellos retornan el token y usuario guardados.
-     */
     @Test void saveTest()
     {
         // Given ...
         AppUser user = new AppUser();
         user.email = "pepito@email.com";
         user.password = "aaABCaa120";
-        user.role = Role.USER;
+        user.role = Role.RESTAURANTE;
         user.name = "pepito";
 
         Token token = new Token();
@@ -46,18 +39,13 @@ class RepositoryIntegrationTest {
         Assertions.assertNotNull(tokenInDB);
     }
 
-    /**
-     * TODO#10
-     * Completa este test de integración para que verifique que
-     * cuando se borra un usuario, automáticamente se borran sus tokens asociados.
-     */
     @Test void deleteCascadeTest()
     {
         // Given ...
         AppUser user = new AppUser();
         user.email = "pepito@email.com";
         user.password = "aaABCaa120";
-        user.role = Role.USER;
+        user.role = Role.RESTAURANTE;
         user.name = "pepito";
 
         Token token = new Token();

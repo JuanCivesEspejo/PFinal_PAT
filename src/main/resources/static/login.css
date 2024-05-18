@@ -57,18 +57,36 @@ field{
   padding: 18px 15px;
 }
 
-a {
-  padding-top: 10px;
-  display: block;
-  text-align: center;
+form p{
+  padding-top: 13px;
+  text-align: left;
+}
+
+form p a {
+  text-decoration: none;
+  color: #3c00a0;
+}
+
+.btn-field{
+  width: 50%;
+  flex-basis: 48%;
+  justify-content: center;
+  background: #4E3629;
+  color: #fff;
+  height: 40px;
+  border-radius: 20px;
+  border: 0;
+  outline: 0;
+  cursor: pointer;
+  transition: background 1s;
 }
 
 p {
   text-align: center;
   border-radius: 3px;
   padding: 2px;
-  margin: 0; /* Añadido para eliminar el margen */
-  font-size: 14px; /* Ajustado el tamaño de la fuente */
+  margin: 0;
+  font-size: 14px;
 }
 .success {
   color: green;
@@ -133,4 +151,12 @@ legend::after {
   bottom: -12px;
   left: 50%;
   transform: translateX(-50%);
+}
+
+@media (max-width: 850px) {
+  form {
+    width: 80%;
+    left: 10%;
+    transform: translate(0, -50%);
+  }
 }

@@ -15,9 +15,10 @@ public class AppUser
 
     @Column(nullable = false, unique = true) public String email;
 
+    @Column(nullable = false) public String name;
+
     @Column(nullable = false) public String password;
 
     @Column(nullable = false) public Role role;
 
-    @Column(nullable = false) public String name;
 }

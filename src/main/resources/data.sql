@@ -1,3 +1,5 @@
+ALTER TABLE APP_USER ALTER COLUMN ID RESTART WITH 10;
+
 INSERT INTO APP_USER
 (id, email                 , password                                           , role, name        ) VALUES
 (1 , 'caprichosa@email.com', 'ui5ZvyPp6mHtb0/d8bTagw==:MaP9vP+OqaGFwbqezdfE8w==', 0   , 'Caprichosa'),
@@ -10,6 +12,7 @@ INSERT INTO APP_USER
 (8 , 'refrescos@email.com' , 'ui5ZvyPp6mHtb0/d8bTagw==:MaP9vP+OqaGFwbqezdfE8w==', 1   , 'Refrescos' ),
 (9 , 'postres@email.com'   , 'ui5ZvyPp6mHtb0/d8bTagw==:MaP9vP+OqaGFwbqezdfE8w==', 1   , 'Repostería');
 
+ALTER TABLE PRODUCT ALTER COLUMN ID RESTART WITH 19;
 
 INSERT INTO PRODUCT
 (id, product_group, product_name, product_price, app_user_id) VALUES

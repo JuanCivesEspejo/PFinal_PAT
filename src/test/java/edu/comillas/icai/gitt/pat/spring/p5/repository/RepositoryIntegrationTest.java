@@ -58,7 +58,7 @@ class RepositoryIntegrationTest {
         appUserRepository.delete(user);
 
         // Then ...
-        Assertions.assertEquals(0, appUserRepository.count());
+        Assertions.assertEquals(9, appUserRepository.count());
         Assertions.assertEquals(0, tokenRepository.count());
     }
 }

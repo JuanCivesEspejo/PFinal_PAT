@@ -1,35 +1,214 @@
 * {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Playfair Display', serif;
 }
+
 body, html {
   height: 100%;
   display: grid;
-  font-family: Georgia, serif;
   margin: 0;
 }
+
 form {
-  margin: auto;
-  width: fit-content;
+  width: 90%;
+  max-width: 450px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(330, 320, 390, 1);
+  text-align: center;
+  padding: 30px;
 }
+
 label {
   padding-top: 10px;
   display: block;
 }
-input, select {
+
+input{
   width: 100%;
+  background: transparent;
+  border: 0;
+  outline: 0;
+  padding: 18px 15px;
 }
-a {
-  padding-top: 10px;
-  display: block;
-  text-align: center;
+
+.input-field{
+  background: #eaeaea;
+  margin: 15px 0;
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
 }
+
+.input-field i{
+  margin-left: 15px;
+  color: #999;
+}
+
+field{
+  width: 100%;
+  background: transparent
+  border: 0;
+  outline: 0;
+  padding: 18px 15px;
+}
+
+form p{
+  padding-top: 13px;
+  text-align: left;
+}
+
+form p a {
+  text-decoration: none;
+  color: #3c00a0;
+}
+
+.btn-field{
+  width: 50%;
+  flex-basis: 48%;
+  justify-content: center;
+  background: #4E3629;
+  color: #fff;
+  height: 40px;
+  border-radius: 20px;
+  border: 0;
+  outline: 0;
+  cursor: pointer;
+  transition: background 1s;
+}
+
 p {
   text-align: center;
   border-radius: 3px;
   padding: 2px;
+  margin: 0;
+  font-size: 14px;
+}
+.success {
+  color: green;
+  border: 2px solid green;
+  background-color: azure;
 }
 .error {
   color: darkred;
   border: 2px solid darkred;
   background-color: lightpink;
+}
+
+header {
+  text-align: center;
+  background-color: #d5d5d5cd;
+  padding: 40px 0;
+  font-family: Helvetica;
+}
+
+footer {
+  text-align: center;
+  background-color: #d5d5d5cd;
+  color: rgb(0, 0, 0);
+  padding: 20px 0;
+}
+
+.container{
+  width: 100%;
+  height: 100vh;
+  background-image: linear-gradient(rgba(245, 245, 220, 0.5), rgba(245, 245, 220, 0.5)), url('fotos/restaurante.jpg');
+  background-position: center;
+  background-size: cover;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+}
+
+form {
+  float: left;
+  font-family: Helvetica;
+  width: 30%;
+  justify-content: center;
+  align-items: center;
+}
+
+fieldset{
+  border: none;
+  justify-content: center;
+  align-items: center;
+}
+
+legend{
+  font-size: 30px;
+  margin-bottom: 60px;
+  position: relative;
+  color: #4E3629;
+}
+
+legend::after {
+  content: '';
+  width: 100px;
+  height: 4px;
+  border-radius: 3px;
+  background: #2E1F17;
+  position: absolute;
+  bottom: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+@media (max-width: 850px) {
+  form {
+    width: 80%;
+    left: 10%;
+    transform: translate(0, -50%);
+  }
+}
+
+.menu {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  background-color: #d5d5d5cd;
+  padding: 0;
+}
+
+.menu li {
+  flex: 5 1 0;
+}
+
+.menu a {
+  font: 30px;
+  font-family: Helvetica;
+  text-align: center;
+  text-decoration:none;
+  display: block;
+  padding: 10px;
+  color: black;
+  user-select: none;
+}
+
+.menu li:hover {
+  background-color: #d5d5d5cd;
+}
+
+.info {
+    text-align: center;
+}
+
+
+.info h1 {
+    position: absolute;
+    top: 42%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin: 0;
+}
+
+.info p {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin: 0;
 }

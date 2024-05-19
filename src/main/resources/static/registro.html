@@ -8,27 +8,52 @@
   <link rel="stylesheet" type="text/css" href="registro.css" />
 </head>
 <body>
+<header>
+  <h1>RP-FoodLink</h1>
+</header>
+<main>
+  <ul class="menu">
+    <li><a href="index.html">INICIO</a></li>
+    <li><a href="info.html">CÓMO FUNCIONA</a></li>
+    <li><a href="contacto.html">CONTACTO</a></li>
+    <li><a href="login.html">INICIO DE SESIÓN</a></li>
+    <li><a href="registro.html">REGISTRARSE</a></li>
+  </ul>
   <form onsubmit="registrarUsuario(form2json(event))">
     <fieldset>
-      <legend>👤</legend>
-      <label for="nombre">Nombre:</label>
-      <input type="text" name="name" id="nombre" required>
-      <label for="role">Rol:</label>
-      <select name="role" id="role" required>
-        <option value="RESTAURANTE">Restaurante</option>
-        <option value="PROVEEDOR">Proveedor</option>
-      </select>
-      <label for="email">Correo electrónico:</label>
-      <input type="email" name="email" id="email" required>
-      <label for="password">Contraseña:</label>
-      <input type="password" name="password" id="password" required pattern="^(?=.*[0-9])(?=.*[A-Z])(?=.*[a-z]).*$" title="Debe contener al menos una mayúscula, una minúscula y un número" minlength="8" onkeyup="compruebaPass()">
-      <label for="password2">Repetir contraseña:</label>
-      <input type="password" name="password2" id="password2" required onkeyup="compruebaPass()">
+      <legend>Registrarse</legend>
+      <div class="input-field">
+        <label for="nombre">Nombre:</label>
+        <input type="text" name="name" id="nombre" required>
+      </div>
+      <div class="input-field">
+        <label for="role">Rol:</label>
+        <select name="role" id="role" required>
+          <option value="RESTAURANTE">Restaurante</option>
+          <option value="PROVEEDOR">Proveedor</option>
+        </select>
+      </div>
+      <div class="input-field">
+        <label for="email">Correo electrónico:</label>
+        <input type="email" name="email" id="email" required>
+      </div>
+      <div class="input-field">
+        <label for="password">Contraseña:</label>
+        <input type="password" name="password" id="password" required pattern="^(?=.*[0-9])(?=.*[A-Z])(?=.*[a-z]).*$" title="Debe contener al menos una mayúscula, una minúscula y un número" minlength="8" onkeyup="compruebaPass()">
+      </div>
+      <div class="input-field">
+        <label for="password2">Repetir contraseña:</label>
+        <input type="password" name="password2" id="password2" required onkeyup="compruebaPass()">
+      </div>
       <p id="aviso"></p>
       <hr>
       <input type="submit" value="Registrarse">
       <a href="login.html">Entrar</a>
     </fieldset>
   </form>
+</main>
+<footer>
+  <p>GRACIAS POR CONFIAR EN NOSOTROS</p>
+</footer>
 </body>
 </html>

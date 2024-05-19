@@ -7,10 +7,10 @@ import org.hibernate.annotations.OnDeleteAction;
 @Entity
 public class OrderDetail {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY) public String id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY) public Long id;
 
-    @ManyToOne(targetEntity = Order.class)
-    public Order order;
+    @ManyToOne(targetEntity = Orders.class)
+    public Orders order;
 
     @OneToOne(optional = false)
     public Product product;

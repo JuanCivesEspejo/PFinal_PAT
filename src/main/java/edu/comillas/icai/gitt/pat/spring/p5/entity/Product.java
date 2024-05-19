@@ -7,7 +7,7 @@ import org.hibernate.annotations.OnDeleteAction;
 @Entity
 public class Product {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY) public String id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY) public Long id;
 
     @Column(nullable = false) public String productGroup;
 

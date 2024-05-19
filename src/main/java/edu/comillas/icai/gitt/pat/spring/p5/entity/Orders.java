@@ -7,9 +7,9 @@ import org.hibernate.annotations.OnDeleteAction;
 import java.security.Timestamp;
 
 @Entity
-public class Order {
+public class Orders {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY) public String id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY) public Long id;
 
     @OnDelete(action = OnDeleteAction.CASCADE)
     @ManyToOne(targetEntity = AppUser.class)

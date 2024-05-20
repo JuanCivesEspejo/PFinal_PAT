@@ -78,4 +78,8 @@ public class OrdersService {
         AppUser provider = appUserRepository.findByEmail(providerEmail);
         return orderDetailRepository.findByAppUserAndStatus(provider, "Sin procesar");
     }
+    public List<Orders> getOrdersByRestaurant(String restaurantEmail) {
+        AppUser restaurant = appUserRepository.findByEmail(restaurantEmail);
+        return orderRepository.findByAppUser(restaurant);
+    }
 }

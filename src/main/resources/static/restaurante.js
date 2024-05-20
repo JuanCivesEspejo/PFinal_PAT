@@ -124,27 +124,40 @@ function mostrarArticulo(articulo) {
   document.querySelector(`a[href="${articulo}"]`).classList.add('active');
 }
 
+function pedidosRestaurante(clientEmail) {
+  const url = `/api/orders/restaurant/${clientEmail}`;
+  console.log("Request URL:", url);
+  return fetch(url).then(res => {
+    if (!res.ok) {
+      throw new Error(`HTTP error! status: ${res.status}`);
+    }
+    return res.json();
+  });
+}
+
+function cargarPedidos(email) {
+  return pedidosRestaurante(email).then(pedidos => {
+    console.log(pedidos);
+    const tablaPedidos = document.getElementById('tabla-pedidos');
+    tablaPedidos.innerHTML = '';
+
+    pedidos.forEach(pedido => {
+      console.log(pedido);
+      const fila = document.createElement('tr');
+      fila.innerHTML = `
+        <td>${pedido.id}</td>
+        <td>${pedido.orderDate}</td>
+        <td>${pedido.totalPrice}</td>
+      `;
+      tablaPedidos.appendChild(fila);
+    });
+  }).catch(error => {
+    console.error('Error al cargar los pedidos pendientes:', error);
+  });
+
 function form2json(event) {
   event.preventDefault();
   const data = new FormData(event.target);
   return JSON.stringify(Object.fromEntries(data.entries()));
 }
 
-function mostrarPedidos(email) {
-  return pedidosPendientes(email).then(pedidos => {
-    const tablaPedidos = document.getElementById('tabla-pedidos');
-    tablaPedidos.innerHTML = '';
-    pedidos.forEach(pedido => {
-    console.log(pedido);
-      const fila = document.createElement('tr');
-      fila.innerHTML = `
-        <td>${pedido.id}</td>
-        <td>${pedido.producto}</td>
-        <td>${pedido.cantidad}</td>
-        <td>${pedido.fecha}</td>
-        <td>${pedido.estado}</td>
-      `;
-      tablaPedidos.appendChild(fila);
-    });
-  });
-}

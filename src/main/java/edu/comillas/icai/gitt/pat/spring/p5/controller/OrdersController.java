@@ -48,4 +48,10 @@ public class OrdersController {
     public List<OrderDetail> getOrders(@PathVariable String providerEmail) {
         return ordersService.getOrdersBySupplier(providerEmail);
     }
+
+    @GetMapping("/api/orders/restaurant/{clientEmail}")
+    @ResponseStatus(HttpStatus.OK)
+    public List<Orders> getOrdersByClient(@PathVariable String clientEmail) {
+        return ordersService.getOrdersByRestaurant(clientEmail);
+    }
 }

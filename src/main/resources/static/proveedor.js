@@ -1,14 +1,9 @@
-document.addEventListener('DOMContentLoaded', () => {
-  cargarProductos();
-  configurarBotonPedido();
-});
-
 function datosPerfil() {
   return fetch('/api/users/me').then(res => res.json());
 }
 
-function pedidosPendientes(email) {
-  const url = `/api/orders/delivery/${encodeURIComponent(email)}`;
+function pedidosPendientes(providerEmail) {
+  const url = `/api/orders/delivery/${providerEmail}`;
   console.log("Request URL:", url);
   return fetch(url).then(res => {
     if (!res.ok) {
@@ -18,59 +13,37 @@ function pedidosPendientes(email) {
   });
 }
 
-function cargarPerfil() {
+function articuloInicio() {
   return datosPerfil().then(perfil => {
     document.getElementById('nombre-inicio').textContent = perfil.name;
     document.getElementById('tel-inicio').textContent = perfil.role;
     document.getElementById('email-inicio').textContent = perfil.email;
-    return perfil.email;
+    return cargarPedidos(perfil.email);
+  }).catch(error => {
+    console.error('Error al cargar el perfil:', error);
   });
 }
 
 function cargarPedidos(email) {
   return pedidosPendientes(email).then(pedidos => {
+    console.log(pedidos);
     const tablaPedidos = document.getElementById('tabla-pedidos');
     tablaPedidos.innerHTML = '';
 
     pedidos.forEach(pedido => {
-    console.log(pedido);
+      console.log(pedido);
       const fila = document.createElement('tr');
       fila.innerHTML = `
-        <td>${pedido.id}</td>
-        <td>${pedido.cliente}</td>
-        <td>${pedido.direccion}</td>
-        <td>${pedido.estado}</td>
+        <td>${pedido.order.id}</td>
+        <td>${pedido.order.appUser.email}</td>
+        <td>${pedido.product.productName}</td>
+        <td>${pedido.detailPrice}</td>
+        <td>${pedido.status}</td>
       `;
       tablaPedidos.appendChild(fila);
     });
-  });
-}
-
-function configurarBotonPedido() {
-  const botonCargarPedidos = document.getElementById('boton-cargar-pedidos');
-  botonCargarPedidos.addEventListener('click', () => {
-    datosPerfil().then(perfil => {
-      const email = perfil.email;
-      if (email) {
-        return cargarPedidos(email);
-      } else {
-        console.error('No se encontró el correo electrónico en el perfil del usuario');
-      }
-    }).catch(error => {
-      console.error('Error al cargar los pedidos pendientes:', error);
-    });
-  });
-}
-
-function articuloInicio() {
-  return cargarPerfil().then(email => {
-    if (email) {
-      return cargarPedidos(email);
-    } else {
-      console.error('No se encontró el correo electrónico en el perfil del usuario');
-    }
   }).catch(error => {
-    console.error('Error al cargar el perfil o los pedidos:', error);
+    console.error('Error al cargar los pedidos pendientes:', error);
   });
 }
 
@@ -98,11 +71,9 @@ function inicializar() {
 }
 
 function cargarArticulo(articulo) {
-  switch (articulo) {
-    case '#inicio':
-      return articuloInicio();
-    default:
-      return Promise.resolve();
+  switch(articulo) {
+    case '#inicio': return articuloInicio();
+    default: return articuloInicio();
   }
 }
 

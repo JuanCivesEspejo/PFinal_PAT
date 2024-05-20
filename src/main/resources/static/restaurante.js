@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
   cargarProductos();
   configurarBotonPedido();
+
 });
 
 function cargarProductos() {
@@ -127,4 +128,23 @@ function form2json(event) {
   event.preventDefault();
   const data = new FormData(event.target);
   return JSON.stringify(Object.fromEntries(data.entries()));
+}
+
+function mostrarPedidos(email) {
+  return pedidosPendientes(email).then(pedidos => {
+    const tablaPedidos = document.getElementById('tabla-pedidos');
+    tablaPedidos.innerHTML = '';
+    pedidos.forEach(pedido => {
+    console.log(pedido);
+      const fila = document.createElement('tr');
+      fila.innerHTML = `
+        <td>${pedido.id}</td>
+        <td>${pedido.producto}</td>
+        <td>${pedido.cantidad}</td>
+        <td>${pedido.fecha}</td>
+        <td>${pedido.estado}</td>
+      `;
+      tablaPedidos.appendChild(fila);
+    });
+  });
 }

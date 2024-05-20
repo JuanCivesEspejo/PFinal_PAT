@@ -25,13 +25,14 @@ footer {
   padding: 20px 0;
 }
 
-.container{
+.container {
   width: 100%;
   height: 100vh;
   background-image: linear-gradient(rgba(245, 245, 220, 0.5), rgba(245, 245, 220, 0.5)), url('fotos/restaurante.jpg');
   background-position: center;
   background-size: cover;
   position: relative;
+  display: flex;
   justify-content: center;
   align-items: center;
 }
@@ -49,6 +50,7 @@ footer {
   list-style: none;
   margin: 0;
   background-color: #d5d5d5cd;
+  font-family: Helvetica;
   padding: 0;
 }
 
@@ -60,7 +62,7 @@ footer {
   font: 30px;
   font-family: Helvetica;
   text-align: center;
-  text-decoration:none;
+  text-decoration: none;
   display: block;
   padding: 10px;
   color: black;
@@ -72,53 +74,52 @@ footer {
 }
 
 .info {
-    text-align: center;
-    width: 50%;
-    height: 25%;
-    background-color: #ffffff;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    box-sizing: border-box;
+  text-align: center;
+  width: 70%;
+  max-width: 600px;
+  padding: 20px;
+  background-color: #d5d5d5cd;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
 }
 
 .info h1 {
-    position: absolute;
-    top: 30%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    margin: 0 0 15px 0;
+  margin: 0 0 20px;
+  font-size: 2rem;
 }
 
 .info p {
-    position: absolute;
-    top: 60%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    margin: 0;
+  margin: 0;
 }
 
 .info2 {
-    text-align: center;
-    width: 70%;
-    height: 50%;
-    background-color: #ffffff;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    box-sizing: border-box;
+  width: 80%;
+  max-width: 600px;
+  padding: 20px;
+  background-color: #d5d5d5cd;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+.info2 h1 {
+  margin: 0 0 20px;
+  font-size: 2rem;
+}
+
+.info2 p {
+  margin: 0;
 }

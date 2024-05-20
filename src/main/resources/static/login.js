@@ -5,10 +5,41 @@ function inicializar() {
 }
 
 function entrar(datosJsonFormulario) {
-  fetch('/api/users/me/session', {method: 'post', body: datosJsonFormulario, headers: {'content-type': 'application/json'}})
+  fetch('http://localhost:8080/api/users', {
+    method: 'post',
+    body: datosJsonFormulario,
+    headers: {'content-type': 'application/json'}
+  })
     .then(response => {
-      if (response.ok) location.href = 'app.html';
-      else mostrarAviso('✖︎ Credenciales incorrectas', 'error');
+      if (response.ok) {
+        const sessionCookie = document.cookie
+          .split('; ')
+          .find(row => row.startsWith('session='))
+          .split('=')[1];
+
+        return fetch(' http://localhost:8080/api/users', {
+          method: 'get',
+          headers: {
+            'content-type': 'application/json',
+            'Authorization': `Bearer ${sessionCookie}`
+          }
+        });
+      } else {
+        throw new Error('Credenciales incorrectas');
+      }
+    })
+    .then(response => response.json())
+    .then(data => {
+      if (data && data.role) {
+        if (data.role === 'restaurante') {
+          location.href = 'restaurante.html';
+        } else if (data.role === 'proveedor') {
+          location.href = 'proveedor.html';
+        }
+      }
+    })
+    .catch(error => {
+      mostrarAviso(`✖︎ ${error.message}`, 'error');
     });
 }
 

@@ -76,6 +76,6 @@ public class OrdersService {
 
     public List<OrderDetail> getOrdersBySupplier(String providerEmail) {
         AppUser provider = appUserRepository.findByEmail(providerEmail);
-        return orderDetailRepository.findByAppUserAndStatus(provider, "Sin Procesar");
+        return orderDetailRepository.findByAppUserAndStatus(provider, "Sin procesar");
     }
 }

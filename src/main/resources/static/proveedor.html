@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>App</title>
-  <script src="restaurante.js"></script>
-  <link rel="stylesheet" type="text/css" href="restaurante.css" />
+  <title>Proveedor</title>
+  <script src="proveedor.js"></script>
+  <link rel="stylesheet" type="text/css" href="proveedor.css" />
 </head>
 <body onload="inicializar()">
   <header>
@@ -30,6 +30,21 @@
       </section>
       <section>
         <button type="button" onclick="baja()">Darse de baja</button>
+      </section>
+      <section id="pedidos-pendientes">
+        <h2>Pedidos Pendientes</h2>
+        <table>
+          <thead>
+          <tr>
+            <th>ID Pedido</th>
+            <th>Cliente</th>
+            <th>Dirección</th>
+            <th>Estado</th>
+          </tr>
+          </thead>
+          <tbody id="tabla-pedidos">
+          </tbody>
+        </table>
       </section>
     </article>
   </main>

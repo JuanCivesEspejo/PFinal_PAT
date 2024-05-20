@@ -1,8 +1,10 @@
 package edu.comillas.icai.gitt.pat.spring.p5;
 
+import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import edu.comillas.icai.gitt.pat.spring.p5.entity.AppUser;
 import edu.comillas.icai.gitt.pat.spring.p5.entity.Token;
+import edu.comillas.icai.gitt.pat.spring.p5.model.OrderRequest;
 import edu.comillas.icai.gitt.pat.spring.p5.model.Role;
 import edu.comillas.icai.gitt.pat.spring.p5.repository.AppUserRepository;
 import edu.comillas.icai.gitt.pat.spring.p5.repository.TokenRepository;
@@ -42,7 +44,8 @@ class P5ApplicationE2ETest {
     @Autowired
     AppUserRepository appUserRepository;
 
-    @Test public void registerTest() {
+    @Test
+    public void registerTest() {
         // Given ...
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
@@ -60,13 +63,14 @@ class P5ApplicationE2ETest {
         // Then ...
         Assertions.assertEquals(HttpStatus.CREATED, response.getStatusCode());
         Assertions.assertEquals("{" +
-                "\"name\":\"" + NAME + "\"," +
-                "\"email\":\"" + EMAIL + "\"," +
-                "\"role\":\"" + Role.RESTAURANTE + "\"}",
+                        "\"name\":\"" + NAME + "\"," +
+                        "\"email\":\"" + EMAIL + "\"," +
+                        "\"role\":\"" + Role.RESTAURANTE + "\"}",
                 response.getBody());
     }
 
-    @Test public void loginOkTest() {
+    @Test
+    public void loginOkTest() {
         // Given ...
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
@@ -94,7 +98,8 @@ class P5ApplicationE2ETest {
         Assertions.assertNotNull(userResponse.getHeaders().get("Set-Cookie"));
     }
 
-    @Test public void createOrder() {
+    @Test
+    public void createOrder() {
         // Given ...
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
@@ -117,6 +122,27 @@ class P5ApplicationE2ETest {
                 "\"orders\":{\"Merluza\":2,\"Tinto\":3,\"Sandía\":5}" +
                 "}";
         Assertions.assertEquals(expectedResponse, response.getBody());
+
+        try {
+            ObjectMapper objectMapper = new ObjectMapper();
+            JsonNode actualResponseJson = objectMapper.readTree(response.getBody());
+            JsonNode ordersNode = actualResponseJson.get("orders");
+
+            Map<String, Integer> expectedOrders = new HashMap<>();
+            expectedOrders.put("Merluza", 2);
+            expectedOrders.put("Tinto", 3);
+            expectedOrders.put("Sandía", 5);
+
+            Assertions.assertEquals(expectedOrders.size(), ordersNode.size(), "The number of items in the order should match");
+
+            for (Map.Entry<String, Integer> entry : expectedOrders.entrySet()) {
+                Assertions.assertTrue(ordersNode.has(entry.getKey()), "Order should contain item: " + entry.getKey());
+                Assertions.assertEquals(entry.getValue().intValue(), ordersNode.get(entry.getKey()).asInt(), "Order quantity for " + entry.getKey() + " should match");
+            }
+
+        } catch (Exception e) {
+            Assertions.fail("Failed to parse JSON response: " + e.getMessage());
+        }
     }
 }
 

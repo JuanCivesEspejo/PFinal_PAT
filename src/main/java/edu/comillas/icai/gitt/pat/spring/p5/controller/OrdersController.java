@@ -1,5 +1,6 @@
 package edu.comillas.icai.gitt.pat.spring.p5.controller;
 
+import edu.comillas.icai.gitt.pat.spring.p5.entity.OrderDetail;
 import edu.comillas.icai.gitt.pat.spring.p5.entity.Orders;
 import edu.comillas.icai.gitt.pat.spring.p5.entity.Product;
 import edu.comillas.icai.gitt.pat.spring.p5.model.OrderRequest;
@@ -37,7 +38,14 @@ public class OrdersController {
     }
 
     @GetMapping("/api/products")
+    @ResponseStatus(HttpStatus.OK)
     public Iterable<Product> getProducts() {
         return ordersService.getProducts();
+    }
+
+    @GetMapping("/api/orders/delivery")
+    @ResponseStatus(HttpStatus.OK)
+    public List<OrderDetail> getOrders(@RequestParam String providerEmail) {
+        return ordersService.getOrdersBySupplier(providerEmail);
     }
 }

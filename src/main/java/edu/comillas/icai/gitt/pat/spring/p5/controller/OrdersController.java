@@ -43,9 +43,9 @@ public class OrdersController {
         return ordersService.getProducts();
     }
 
-    @GetMapping("/api/orders/delivery")
+    @GetMapping("/api/orders/delivery/{providerEmail}")
     @ResponseStatus(HttpStatus.OK)
-    public List<OrderDetail> getOrders(@RequestParam String providerEmail) {
+    public List<OrderDetail> getOrders(@PathVariable String providerEmail) {
         return ordersService.getOrdersBySupplier(providerEmail);
     }
 }

@@ -9,6 +9,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class OrderRequestUnitTest {
@@ -61,6 +62,24 @@ public class OrderRequestUnitTest {
                 validator.validate(pedido);
         // Then ...
         assertTrue(!violations.isEmpty());
+    }
+
+    @Test
+    public void testOrderSize() {
+        // Given ...
+        Map<String, Integer> orders = new HashMap<>();
+        orders.put("Merluza", 2);
+        orders.put("Tinto", 3);
+        orders.put("Sandía", 5);
+
+        OrderRequest pedido = new OrderRequest(
+                "caprichosa@email.com", "20/05/2024", orders);
+
+        // When ...
+        int totalOrderSize = orders.values().stream().mapToInt(Integer::intValue).sum();
+
+        // Then ...
+        assertEquals(10, totalOrderSize);
     }
 }
 

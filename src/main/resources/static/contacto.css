@@ -60,7 +60,7 @@ footer {
   font: 30px;
   font-family: Helvetica;
   text-align: center;
-  text-decoration:none;
+  text-decoration: none;
   display: block;
   padding: 10px;
   color: black;
@@ -74,8 +74,8 @@ footer {
 .info {
     text-align: center;
     width: 35%;
-    height: 25%;
-    background-color: #ffffff;
+    height: 30rm;
+    background-color: #d5d5d5cd;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     position: absolute;
     top: 50%;

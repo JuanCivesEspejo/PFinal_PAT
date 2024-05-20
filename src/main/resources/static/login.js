@@ -5,7 +5,7 @@ function inicializar() {
 }
 
 function entrar(datosJsonFormulario) {
-  fetch('http://localhost:8080/api/users', {
+  fetch('/api/users', {
     method: 'post',
     body: datosJsonFormulario,
     headers: {'content-type': 'application/json'}
@@ -17,7 +17,7 @@ function entrar(datosJsonFormulario) {
           .find(row => row.startsWith('session='))
           .split('=')[1];
 
-        return fetch(' http://localhost:8080/api/users', {
+        return fetch('/api/users', {
           method: 'get',
           headers: {
             'content-type': 'application/json',

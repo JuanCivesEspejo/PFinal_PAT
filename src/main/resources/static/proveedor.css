@@ -43,7 +43,7 @@ article {
   margin: 0 auto;
   width: fit-content;
 }
-table, tr, td {
+table, tr, td, th {
   border: 1px solid silver;
   padding: 3px;
 }
@@ -51,7 +51,7 @@ table {
   width: 100%;
   border-collapse: collapse;
 }
-td[id] {
+td[id], th {
   text-align: right;
 }
 label {
@@ -79,4 +79,18 @@ footer {
   background-color: white;
   position: fixed;
   bottom: 0;
+}
+
+#pedidos-pendientes {
+  margin-top: 20px;
+}
+#pedidos-pendientes table {
+  width: 100%;
+}
+#pedidos-pendientes th {
+  background-color: #f2f2f2;
+  text-align: center;
+}
+#pedidos-pendientes td {
+  text-align: left;
 }

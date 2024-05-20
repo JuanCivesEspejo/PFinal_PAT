@@ -1,5 +1,6 @@
 package edu.comillas.icai.gitt.pat.spring.p5.service;
 
+import edu.comillas.icai.gitt.pat.spring.p5.entity.AppUser;
 import edu.comillas.icai.gitt.pat.spring.p5.entity.OrderDetail;
 import edu.comillas.icai.gitt.pat.spring.p5.entity.Orders;
 import edu.comillas.icai.gitt.pat.spring.p5.entity.Product;
@@ -71,5 +72,10 @@ public class OrdersService {
     public Iterable<Product> getProducts()
     {
         return productRepository.findAll();
+    }
+
+    public List<OrderDetail> getOrdersBySupplier(String providerEmail) {
+        AppUser provider = appUserRepository.findByEmail(providerEmail);
+        return orderDetailRepository.findByAppUserAndStatus(provider, "Sin Procesar");
     }
 }

@@ -5,13 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Registro</title>
   <script src="registro.js"></script>
+  <script src="https://kit.fontawesome.com/1eae443600.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" type="text/css" href="registro.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
 <header>
   <h1>RP-FoodLink</h1>
 </header>
-<main>
+<main class="container">
   <ul class="menu">
     <li><a href="index.html">INICIO</a></li>
     <li><a href="info.html">CÓMO FUNCIONA</a></li>
@@ -23,31 +25,32 @@
     <fieldset>
       <legend>Registrarse</legend>
       <div class="input-field">
-        <i class="fa-solid fa-user"></i>
+        <label class="campo">nombre</label>
         <input type="text" name="name" id="nombre" required>
       </div>
       <div class="input-field">
+        <label class="campo">rol</label>
         <select name="role" id="role" required>
           <option value="RESTAURANTE">Restaurante</option>
           <option value="PROVEEDOR">Proveedor</option>
         </select>
       </div>
       <div class="input-field">
-        <i class="fa-solid fa-email"></i>
+        <label class="campo">email</label>
         <input type="email" name="email" id="email" required>
       </div>
       <div class="input-field">
-        <i class="fa-solid fa-lock"></i>
+        <label class="campo">password</label>
         <input type="password" name="password" id="password" required pattern="^(?=.*[0-9])(?=.*[A-Z])(?=.*[a-z]).*$" title="Debe contener al menos una mayúscula, una minúscula y un número" minlength="8" onkeyup="compruebaPass()">
       </div>
       <div class="input-field">
-        <i class="fa-solid fa-lock"></i>
+        <label class="campo">password</label>
         <input type="password" name="password2" id="password2" required onkeyup="compruebaPass()">
       </div>
       <p id="aviso"></p>
-      <hr>
-      <input type="submit" value="Registrarse">
-      <a href="login.html">Entrar</a>
+      <button class="btn-field" type="submit" value="Registrarse">
+        Registrarse
+      </button>
     </fieldset>
   </form>
 </main>

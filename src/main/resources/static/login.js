@@ -5,37 +5,28 @@ function inicializar() {
 }
 
 function entrar(datosJsonFormulario) {
-  fetch('/api/users', {
-    method: 'post',
+  fetch('/api/users/me/session', {
+    method: 'POST',
     body: datosJsonFormulario,
     headers: {'content-type': 'application/json'}
   })
     .then(response => {
-      if (response.ok) {
-        const sessionCookie = document.cookie
-          .split('; ')
-          .find(row => row.startsWith('session='))
-          .split('=')[1];
-
-        return fetch('/api/users', {
-          method: 'get',
-          headers: {
-            'content-type': 'application/json',
-            'Authorization': `Bearer ${sessionCookie}`
-          }
-        });
-      } else {
+      if (!response.ok) {
         throw new Error('Credenciales incorrectas');
       }
+      return fetch('/api/users/me');
     })
-    .then(response => response.json())
-    .then(data => {
-      if (data && data.role) {
-        if (data.role === 'restaurante') {
-          location.href = 'restaurante.html';
-        } else if (data.role === 'proveedor') {
-          location.href = 'proveedor.html';
-        }
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Error al obtener el perfil del usuario');
+      }
+      return response.json();
+    })
+    .then(profile => {
+      if (profile.role === 'RESTAURANTE') {
+        location.href = 'restaurante.html';
+      } else if (profile.role === 'PROVEEDOR') {
+        location.href = 'proveedor.html';
       }
     })
     .catch(error => {

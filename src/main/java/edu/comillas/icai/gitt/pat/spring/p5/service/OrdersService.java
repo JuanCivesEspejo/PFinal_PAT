@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
 import java.util.Map;
 
 @Service
@@ -65,5 +66,10 @@ public class OrdersService {
             orderDetail.status = "Sin procesar";
             orderDetailRepository.save(orderDetail);
         }
+    }
+
+    public Iterable<Product> getProducts()
+    {
+        return productRepository.findAll();
     }
 }

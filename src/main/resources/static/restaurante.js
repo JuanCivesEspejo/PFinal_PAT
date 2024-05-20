@@ -1,3 +1,83 @@
+document.addEventListener('DOMContentLoaded', () => {
+  cargarProductos();
+  configurarBotonPedido();
+});
+
+function cargarProductos() {
+  fetch('/api/products')
+    .then(response => response.json())
+    .then(products => {
+      const productList = document.getElementById('product-list');
+      products.forEach(product => {
+        const productItem = crearElementoProducto(product);
+        productList.appendChild(productItem);
+      });
+    })
+    .catch(error => {
+      console.error('Error al cargar productos:', error);
+    });
+}
+
+function crearElementoProducto(product) {
+  const productItem = document.createElement('div');
+  productItem.className = 'product-item';
+  productItem.innerHTML = `
+    <h3>${product.productName}</h3>
+    <p>Precio: $${product.productPrice}</p>
+    <input type="number" min="0" placeholder="Cantidad" id="${product.productName}">
+  `;
+  return productItem;
+}
+
+function configurarBotonPedido() {
+  document.getElementById('submit-order').addEventListener('click', () => {
+    const order = recogerPedido();
+    if (Object.keys(order).length > 0) {
+      enviarPedido(order);
+    } else {
+      alert('Por favor, seleccione al menos un producto.');
+    }
+  });
+}
+
+function recogerPedido() {
+  const order = {};
+  document.querySelectorAll('.product-item input').forEach(input => {
+    const productName = input.id;
+    const quantity = parseInt(input.value);
+    if (quantity > 0) {
+      order[productName] = quantity;
+    }
+  });
+  return order;
+}
+
+function enviarPedido(order) {
+  const date = new Date();
+  const formattedDate = `${String(date.getDate()).padStart(2, '0')}/${String(date.getMonth() + 1).padStart(2, '0')}/${date.getFullYear()}`;
+
+  const emailInicioElement = document.getElementById('email-inicio');
+  const orderData = {
+    restaurant: "caprichosa@email.com",
+    date: formattedDate,
+    orders: order
+  };
+
+  fetch('/api/orders', {
+    method: 'POST',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify(orderData)
+  })
+    .then(response => response.json())
+    .then(data => {
+      alert('Pedido realizado con éxito');
+    })
+    .catch(error => {
+      console.error('Error al realizar el pedido:', error);
+      alert('Hubo un error al realizar el pedido');
+    });
+}
+
 function datosPerfil() {
   return fetch('/api/users/me').then(res => res.json());
 }

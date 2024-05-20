@@ -10,7 +10,7 @@ public record OrderRequest(
         @NotBlank
         String restaurant,
         @NotBlank
-        @Pattern(regexp = "^\\d{2}/\\d{2}/\\d{4}$", message = "La fecha debe tener el formato DD/MM/YY")
+        @Pattern(regexp = "^\\d{2}/\\d{2}/\\d{4}$", message = "La fecha debe tener el formato DD/MM/YYYY")
         String date,
         @NotNull
         Map<String, Integer> orders) {

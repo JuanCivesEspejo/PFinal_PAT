@@ -14,7 +14,7 @@ public class OrderDetail {
     public Orders order;
 
     @OnDelete(action = OnDeleteAction.CASCADE)
-    @OneToOne(optional = false)
+    @ManyToOne(optional = false)
     public Product product;
 
     @Column(nullable = false) public Long quantity;

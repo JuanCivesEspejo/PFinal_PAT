@@ -153,7 +153,12 @@ function cargarPedidos(email) {
     });
   }).catch(error => {
     console.error('Error al cargar los pedidos pendientes:', error);
-  });
+  });}
+
+function actualizarPedidos(){
+    const email = document.getElementById('email-inicio').textContent;
+    cargarPedidos(email);
+}
 
 function form2json(event) {
   event.preventDefault();

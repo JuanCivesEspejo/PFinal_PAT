@@ -5,12 +5,13 @@ body, html {
   height: 100%;
   font-family: Georgia, serif;
   margin: 0;
+  background-color: rgba(213, 213, 213, 0.5);
 }
 header {
-  background-color: #503C3C;
-  color: #fff;
+  background-color: #d5d5d5cd;
+  color: black;
   display: flex;
-  padding: 10px 0 10px 0; 
+  padding: 10px 0 10px 0;
 }
 nav {
   width: 100%;
@@ -25,7 +26,7 @@ nav ul li:last-child {
   margin-left: auto;
 }
 nav a {
-  color: #fff;
+  color: black;
   text-decoration: none;
   padding: 10px;
   cursor: pointer;
@@ -47,7 +48,7 @@ table, tr, td, th {
   border: 1px solid silver;
   padding: 3px;
 }
-table { 
+table {
   width: 100%;
   border-collapse: collapse;
 }
@@ -76,10 +77,23 @@ footer {
   font-size: 0.7rem;
   color: #503C3C;
   text-align: center;
-  background-color: white;
+  background-color: #d5d5d5cd;
   position: fixed;
   bottom: 0;
 }
+button {
+  padding: 10px 20px;
+  background-color: #4E3629;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #d2b48c;
+}
+
 
 #pedidos-pendientes {
   margin-top: 20px;

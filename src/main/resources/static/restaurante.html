@@ -6,6 +6,7 @@
   <title>Restaurante</title>
   <script src="restaurante.js"></script>
   <link rel="stylesheet" type="text/css" href="restaurante.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body onload="inicializar()">
   <header>
@@ -29,10 +30,10 @@
         </table>
       </section>
       <section>
-        <button type="button" onclick="baja()">Darse de baja</button>
+        <button class="btn-field" type="button" onclick="baja()">Darse de baja</button>
       </section>
       <section>
-        <button id="reload-orders" onclick="actualizarPedidos()">Actualizar pedidos</button>
+        <button class="btn-field" id="reload-orders" onclick="actualizarPedidos()">Actualizar pedidos</button>
         <table>
           <thead>
           <tr>
@@ -47,7 +48,7 @@
       </section>
     <section class="container">
       <div id="product-list"></div>
-      <button id="submit-order">Hacer Pedido</button>
+      <button class="btn-field" id="submit-order">Hacer Pedido</button>
     </section>
     </article>
   </main>

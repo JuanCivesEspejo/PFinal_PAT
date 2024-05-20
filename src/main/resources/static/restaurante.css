@@ -47,12 +47,12 @@ button {
 }
 
 button:hover {
-  background-color: #3c00a0;
+  background-color: #d2b48c;
 }
 
 header {
-  background-color: #503C3C;
-  color: #fff;
+  background-color: #d5d5d5cd;
+  color: black;
   display: flex;
   padding: 10px 0 10px 0;
 }
@@ -66,12 +66,14 @@ nav ul {
   margin: 0;
   padding: 0;
   display: flex;
+  color: black;
 }
 nav ul li:last-child {
   margin-left: auto;
+  color: black;
 }
 nav a {
-  color: #fff;
+  color: black;
   text-decoration: none;
   padding: 10px;
   cursor: pointer;
@@ -84,6 +86,7 @@ nav a:hover {
 }
 main {
   padding: 1rem;
+  background-color: rgba(213, 213, 213, 0.5);
 }
 article {
   margin: 0 auto;
@@ -93,7 +96,7 @@ table, tr, td {
   border: 1px solid silver;
   padding: 3px;
 }
-table { 
+table {
   width: 100%;
   border-collapse: collapse;
 }
@@ -120,9 +123,13 @@ footer {
   border-top: 1px dotted #503C3C;
   padding: 5px;
   font-size: 0.7rem;
-  color: #503C3C;
+  color: black;
   text-align: center;
-  background-color: white;
+  background-color: #d5d5d5cd;
   position: fixed;
   bottom: 0;
+}
+header{
+    background-color: #d5d5d5cd;
+    color: black;
 }

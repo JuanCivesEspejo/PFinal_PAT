@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
-import java.security.Timestamp;
+import java.time.LocalDate;
 
 @Entity
 public class Orders {
@@ -15,7 +15,7 @@ public class Orders {
     @ManyToOne(targetEntity = AppUser.class)
     public AppUser appUser;
 
-    @Column(nullable = false) public Timestamp orderDate;
+    @Column(nullable = false) public LocalDate orderDate;
 
     @Column(nullable = false) public Long totalPrice;
 }

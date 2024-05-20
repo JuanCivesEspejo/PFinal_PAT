@@ -9,9 +9,11 @@ public class OrderDetail {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) public Long id;
 
+    @OnDelete(action = OnDeleteAction.CASCADE)
     @ManyToOne(targetEntity = Orders.class)
     public Orders order;
 
+    @OnDelete(action = OnDeleteAction.CASCADE)
     @OneToOne(optional = false)
     public Product product;
 

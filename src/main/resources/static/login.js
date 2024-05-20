@@ -5,10 +5,32 @@ function inicializar() {
 }
 
 function entrar(datosJsonFormulario) {
-  fetch('/api/users/me/session', {method: 'post', body: datosJsonFormulario, headers: {'content-type': 'application/json'}})
+  fetch('/api/users/me/session', {
+    method: 'POST',
+    body: datosJsonFormulario,
+    headers: {'content-type': 'application/json'}
+  })
     .then(response => {
-      if (response.ok) location.href = 'app.html';
-      else mostrarAviso('✖︎ Credenciales incorrectas', 'error');
+      if (!response.ok) {
+        throw new Error('Credenciales incorrectas');
+      }
+      return fetch('/api/users/me');
+    })
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Error al obtener el perfil del usuario');
+      }
+      return response.json();
+    })
+    .then(profile => {
+      if (profile.role === 'RESTAURANTE') {
+        location.href = 'restaurante.html';
+      } else if (profile.role === 'PROVEEDOR') {
+        location.href = 'proveedor.html';
+      }
+    })
+    .catch(error => {
+      mostrarAviso(`✖︎ ${error.message}`, 'error');
     });
 }
 

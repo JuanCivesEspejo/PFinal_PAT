@@ -1,5 +1,6 @@
 package edu.comillas.icai.gitt.pat.spring.p5;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import edu.comillas.icai.gitt.pat.spring.p5.entity.AppUser;
 import edu.comillas.icai.gitt.pat.spring.p5.entity.Token;
 import edu.comillas.icai.gitt.pat.spring.p5.model.Role;
@@ -19,6 +20,9 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.annotation.DirtiesContext;
 
+import java.util.HashMap;
+import java.util.Map;
+
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT)
 @DirtiesContext(classMode = DirtiesContext.ClassMode.BEFORE_EACH_TEST_METHOD)
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.ANY)
@@ -27,6 +31,8 @@ class P5ApplicationE2ETest {
     private static final String NAME = "Name";
     private static final String EMAIL = "name@email.com";
     private static final String PASS = "aaaaaaA1";
+    private static final String RESTAURANT = "caprichosa@email.com";
+    private static final String DATE = "20/05/2024";
 
     @Autowired
     TestRestTemplate client;
@@ -86,6 +92,31 @@ class P5ApplicationE2ETest {
         // Then ...
         Assertions.assertEquals(HttpStatus.CREATED, response.getStatusCode());
         Assertions.assertNotNull(userResponse.getHeaders().get("Set-Cookie"));
+    }
+
+    @Test public void createOrder() {
+        // Given ...
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+
+        String pedido = "{" +
+                "\"restaurant\":\"" + RESTAURANT + "\"," +
+                "\"date\":\"" + DATE + "\"," +
+                "\"orders\":{\"Merluza\":2,\"Tinto\":3,\"Sandía\":5}" + "}";
+
+        //When ...
+        ResponseEntity<String> response = client.exchange(
+                "http://localhost:8080/api/orders",
+                HttpMethod.POST, new HttpEntity<>(pedido, headers), String.class);
+
+        // Then ...
+        Assertions.assertEquals(HttpStatus.CREATED, response.getStatusCode());
+        String expectedResponse = "{" +
+                "\"restaurant\":\"" + RESTAURANT + "\"," +
+                "\"date\":\"" + DATE + "\"," +
+                "\"orders\":{\"Merluza\":2,\"Tinto\":3,\"Sandía\":5}" +
+                "}";
+        Assertions.assertEquals(expectedResponse, response.getBody());
     }
 }
 

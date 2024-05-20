@@ -1,0 +1,172 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Playfair Display', serif;
+}
+
+body, html {
+  height: 100%;
+  font-family: Georgia, serif;
+  margin: 0;
+}
+
+<<<<<<< HEAD
+=======
+.container {
+  padding: 20px;
+  text-align: center;
+}
+
+#product-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.product-item {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 10px;
+  text-align: left;
+  width: 200px;
+}
+
+.product-item input {
+  width: 50px;
+  margin-top: 10px;
+}
+
+button {
+  padding: 10px 20px;
+  background-color: #4E3629;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #3c00a0;
+}
+
+>>>>>>> adc6322c9c398ccc11e04ccf2c22ec214b4247cf
+header {
+  background-color: #503C3C;
+  color: #fff;
+  display: flex;
+  padding: 10px 0 10px 0;
+}
+
+<<<<<<< HEAD
+.container {
+  padding: 20px;
+  text-align: center;
+  display: grid;
+}
+
+#product-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.product-item {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 10px;
+  text-align: left;
+  width: 200px;
+}
+
+.product-item input {
+  width: 50px;
+  margin-top: 10px;
+}
+
+button {
+  padding: 10px 20px;
+  background-color: #4E3629;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #3c00a0;
+}
+
+=======
+>>>>>>> adc6322c9c398ccc11e04ccf2c22ec214b4247cf
+nav {
+  width: 100%;
+}
+
+nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+nav ul li:last-child {
+  margin-left: auto;
+}
+nav a {
+  color: #fff;
+  text-decoration: none;
+  padding: 10px;
+  cursor: pointer;
+}
+nav a:hover {
+  background-color: #A87C7C;
+}
+.active {
+  font-weight: bolder;
+}
+main {
+  padding: 1rem;
+}
+article {
+  margin: 0 auto;
+  width: fit-content;
+}
+table, tr, td {
+  border: 1px solid silver;
+  padding: 3px;
+}
+table { 
+  width: 100%;
+  border-collapse: collapse;
+}
+td[id] {
+  text-align: right;
+}
+label {
+  padding-top: 10px;
+  display: block;
+}
+input, button {
+  width: 100%;
+}
+section {
+  margin-top: 10px;
+  padding-top: 10px;
+}
+span {
+  display: block;
+  font-size: x-large;
+}
+footer {
+  width: 100%;
+  border-top: 1px dotted #503C3C;
+  padding: 5px;
+  font-size: 0.7rem;
+  color: #503C3C;
+  text-align: center;
+  background-color: white;
+  position: fixed;
+  bottom: 0;
+}

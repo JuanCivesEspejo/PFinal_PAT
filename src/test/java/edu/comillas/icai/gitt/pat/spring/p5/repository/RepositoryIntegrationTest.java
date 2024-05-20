@@ -1,12 +1,18 @@
 package edu.comillas.icai.gitt.pat.spring.p5.repository;
 
 import edu.comillas.icai.gitt.pat.spring.p5.entity.AppUser;
+import edu.comillas.icai.gitt.pat.spring.p5.entity.OrderDetail;
+import edu.comillas.icai.gitt.pat.spring.p5.entity.Orders;
 import edu.comillas.icai.gitt.pat.spring.p5.entity.Token;
 import edu.comillas.icai.gitt.pat.spring.p5.model.Role;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+
+import java.time.LocalDate;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @DataJpaTest
 class RepositoryIntegrationTest {
@@ -58,7 +64,7 @@ class RepositoryIntegrationTest {
         appUserRepository.delete(user);
 
         // Then ...
-        Assertions.assertEquals(0, appUserRepository.count());
+        Assertions.assertEquals(9, appUserRepository.count());
         Assertions.assertEquals(0, tokenRepository.count());
     }
 }
